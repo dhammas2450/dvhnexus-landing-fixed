@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 3-Shift Escape Plan — Donald Hammas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0a0a;
+            --bg-elevated: #141414;
+            --bg-card: #1a1a1a;
+            --text: #ffffff;
+            --text-muted: #888888;
+            --text-dim: #555555;
+            --accent: #00d4aa;
+            --accent-dim: #00a884;
+            --border: #222222;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* CSS Logo - Minimal */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        h1 strong {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .lead {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 50px;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* Curiosity Box */
+        .curiosity-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .curiosity-box p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .curiosity-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .curiosity-box strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .question {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .question:last-child {
+            border-bottom: none;
+        }
+
+        .q-mark {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .q-text {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Benefits - Minimal List */
+        .benefits {
+            margin-bottom: 50px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .benefit-item:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .benefit-num {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 1px;
+            min-width: 30px;
+        }
+
+        .benefit-content h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .benefit-content p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* Form */
+        .form-section {
+            background: var(--bg-elevated);
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin-bottom: 60px;
+            border: 1px solid var(--border);
+        }
+
+        .form-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .form-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 18px 20px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-dim);
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 20px;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+            font-family: inherit;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            background: var(--text);
+            transform: translateY(-2px);
+        }
+
+        .privacy {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        /* Author */
+        .author-section {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .author-card {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .author-info h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .author-role {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .author-bio {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0 60px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-logo {
+            justify-content: center;
+            margin-bottom: 15px;
+            opacity: 0.6;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .curiosity-box {
+                padding: 30px 25px;
+            }
+
+            .form-section {
+                padding: 35px 25px;
+            }
+
+            .author-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-mark">D</div>
+                <span>DVH Nexus</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="eyebrow">A Different Way Out</div>
+            
+            <h1>
+                What if you could <strong>build an escape plan</strong> while still working your shift?
+            </h1>
+            
+            <p class="lead">
+                I built a team of AI workers for $40/month. They work while I stock shelves. Here's how you can do the same.
+            </p>
+
+            <div class="curiosity-box">
+                <div class="question">
+                    <span class="q-mark">?</span>
+                    <span class="q-text">What if you didn't need to quit your job to start building freedom?</span>
+                </div>
+                <div class="question">
+                    <span class="q-mark">?</span>
+                    <span class="q-text">What if technology could do the heavy lifting while you sleep?</span>
+                </div>
+                <div class="question">
+                    <span class="q-mark">?</span>
+                    <span class="q-text">What if the exit door was closer than you think?</span>
+                </div>
+            </div>
+
+            <div class="benefits">
+                <div class="benefit-item">
+                    <span class="benefit-num">01</span>
+                    <div class="benefit-content">
+                        <h3>The $40 AI Team Setup</h3>
+                        <p>The exact tools and configuration that run 24/7</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-num">02</span>
+                    <div class="benefit-content">
+                        <h3>The Shift-Worker's Schedule</h3>
+                        <p>How to build during breaks, commutes, and days off</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-num">03</span>
+                    <div class="benefit-content">
+                        <h3>The July 22, 2026 Timeline</h3>
+                        <p>My real countdown — and how to create yours</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-num">04</span>
+                    <div class="benefit-content">
+                        <h3>From Associate to Owner</h3>
+                        <p>The mindset shift that changes everything</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="form-title">Get the guide</h2>
+                <p class="form-subtitle">Free. No spam. Unsubscribe anytime.</p>
+                
+                <form id="escape-plan-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="First name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@email.com" required>
+                    </div>
+                    <button type="submit" class="cta-button">
+                        Send me the guide →
+                    </button>
+                </form>
+
+    <!-- Form Handler -->
+    <script>
+    (function() {
+        document.getElementById('escape-plan-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
+            if (!firstName || !email) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            const formData = {
+                email: email,
+                firstName: firstName
+            };
+            
+            console.log('Submitting:', formData);
+            
+            try {
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('Response:', response.status);
+                const data = await response.json();
+                console.log('Data:', data);
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                // Always redirect to welcome page
+                window.location.href = 'welcome.html';
+            }
+        });
+    })();
+    </script>
+                
+                <p class="privacy">Your email is safe. I hate spam too.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="author-section">
+        <div class="container">
+            <div class="author-card">
+                <div class="author-avatar">👤</div>
+                <div class="author-info">
+                    <h3>Donald Hammas</h3>
+                    <p class="author-role">Walmart Associate • Building DVH Nexus</p>
+                    <p class="author-bio">
+                        Three years on the floor. Multiple shifts. Same exhaustion you feel. I found a way to build something better without quitting first. My last day is July 22, 2026. This guide shows you how to start your own countdown.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo footer-logo">
+                <div class="logo-mark">D</div>
+                <span>DVH Nexus</span>
+            </div>
+            <p class="footer-text">© 2026 DVH Ventures LLC — dvhnexus.net</p>
+        </div>
+    </footer>
+</body>
+</html>

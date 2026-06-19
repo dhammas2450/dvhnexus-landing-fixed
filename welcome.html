@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome! Your Escape Plan is Coming | DVH Nexus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF3B30;
+            --primary-dark: #D63029;
+            --secondary: #FF6B35;
+            --accent: #FFA500;
+            --dark: #1A1A1A;
+            --light: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at top, rgba(255, 59, 48, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            padding: 50px 40px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(255, 59, 48, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .success-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            margin: 0 auto 30px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 10px 40px rgba(255, 59, 48, 0.4);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.4); }
+            50% { box-shadow: 0 0 0 20px rgba(255, 59, 48, 0); }
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--light);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        p {
+            font-size: 1rem;
+            color: #aaa;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .email-box {
+            background: rgba(255, 59, 48, 0.1);
+            border: 1px solid rgba(255, 59, 48, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .email-box strong {
+            color: var(--accent);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .email-box p {
+            margin-bottom: 0;
+            color: #888;
+        }
+
+        .next-steps {
+            text-align: left;
+            margin: 35px 0;
+        }
+
+        .next-steps h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--light);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .next-steps ol {
+            padding-left: 0;
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .next-steps li {
+            margin-bottom: 18px;
+            line-height: 1.6;
+            color: #aaa;
+            padding-left: 45px;
+            position: relative;
+            counter-increment: step-counter;
+        }
+
+        .next-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .next-steps li strong {
+            color: var(--light);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 59, 48, 0.4);
+        }
+
+        .footer {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 59, 48, 0.2);
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 0;
+        }
+
+        .logo-footer {
+            margin-bottom: 20px;
+        }
+
+        .logo-footer img {
+            height: 50px;
+            width: auto;
+            opacity: 0.7;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 25px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .success-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 35px;
+            }
+
+            .next-steps li {
+                padding-left: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✓</div>
+        
+        <h1>You're In! <span class="highlight">Check Your Email</span></h1>
+        
+        <p>
+            The 3-Shift Escape Plan is on its way to your inbox. 
+            You should receive it within the next 5 minutes.
+        </p>
+        
+        <div class="email-box">
+            <strong>📧 Can't find it?</strong>
+            <p>Check your spam/promotions folder and add <strong>dvhventuresllc@gmail.com</strong> to your contacts.</p>
+        </div>
+        
+        <div class="next-steps">
+            <h2>While You Wait...</h2>
+            <ol>
+                <li><strong>Read the guide fully</strong> — It's short but packed with actionable steps</li>
+                <li><strong>Pick ONE action</strong> — Don't try to do everything at once</li>
+                <li><strong>Set your own countdown</strong> — What's YOUR July 22, 2026?</li>
+                <li><strong>Reply to my email</strong> — I read every response personally</li>
+            </ol>
+        </div>
+        
+        <p>
+            I'm building DVH Nexus to help people like us escape the grind. 
+            This guide is just the beginning.
+        </p>
+        
+        <a href="https://dvhnexus.net" class="cta-button">Visit DVH Nexus →</a>
+        
+        <div class="footer">
+            <div class="logo-footer">
+                <img src="logo.jpg" alt="DVH Nexus Logo">
+            </div>
+            <p>© 2026 DVH Ventures LLC. Built by a Walmart associate, for Walmart associates.</p>
+        </div>
+    </div>
+</body>
+</html>
