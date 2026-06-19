@@ -32,11 +32,11 @@ export default async function handler(req, res) {
   const GC_API_KEY = process.env.GC_API_KEY;
   const GC_BASE_URL = 'https://api.globalcontrol.io/api/ai';
 
-  // Tag IDs - these should be set in environment variables
+  // Tag IDs - hardcoded for reliability
   const TAG_IDS = {
-    'escape-plan': process.env.GC_TAG_ESCAPE || '',
-    'walmart': process.env.GC_TAG_WALMART || '',
-    'lead-magnet': process.env.GC_TAG_LEAD || ''
+    'escape-plan': '6a35811fc2b6d1efefb25daf',
+    'walmart': '6a358122c2b6d1efefb25e9c',
+    'lead-magnet': '6a35812ac2b6d1efefb26dab'
   };
 
   console.log('Processing submission for:', email);
