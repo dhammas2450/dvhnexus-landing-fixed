@@ -32,11 +32,9 @@ export default async function handler(req, res) {
   const GC_API_KEY = process.env.GC_API_KEY;
   const GC_BASE_URL = 'https://api.globalcontrol.io/api/ai';
 
-  // Tag IDs - hardcoded for reliability
+  // Tag ID - only fire the 3-shift-escape-plan tag
   const TAG_IDS = {
-    'escape-plan': '6a35811fc2b6d1efefb25daf',
-    'walmart': '6a358122c2b6d1efefb25e9c',
-    'lead-magnet': '6a35812ac2b6d1efefb26dab'
+    'escape-plan': '6a35811fc2b6d1efefb25daf'
   };
 
   console.log('Processing submission for:', email);
